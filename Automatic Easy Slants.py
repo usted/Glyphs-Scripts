@@ -37,8 +37,9 @@ for master in font.masters:
 	#font.copyInfoForMasterToMaster_(master.id, new_master.id)
 	master.id
 
-	source_kerning = font.kerning[master.id]
-	font.kerning[new_master.id] = source_kerning
+	# copy kerning, if any
+	if source_kerning := font.kerning[master.id]:
+		font.kerning[new_master.id] = source_kerning.copy()
 
 
 # Add the new masters to the font before setting italic angle
