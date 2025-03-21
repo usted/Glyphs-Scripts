@@ -4,7 +4,7 @@ __doc__="""
 Export All Fonts
 """
 
-from GlyphsApp import OTF, TTF, WOFF, WOFF2, EOT, UFO, GSFont, GSInstance, GSCustomParameter, GSPropertyNameFamilyNamesKey, INSTANCETYPEVARIABLE, PLAIN
+from GlyphsApp import OTF, TTF, WOFF, WOFF2, UFO, GSFont, GSInstance, GSCustomParameter, GSPropertyNameFamilyNamesKey, INSTANCETYPEVARIABLE, PLAIN
 import os
 
 # Load your font
@@ -76,7 +76,7 @@ TemporaryVariableInstance_B.customParameters['Filter'] = "Transformations; Width
 font.instances.append(TemporaryVariableInstance_B)
 
 print("== Exporting Website - Protected files ==")
-print(font.export(Format=VARIABLE, Containers=[PLAIN, WOFF, WOFF2], FontPath=os.path.expanduser(subfolder_paths["Website - Protected files"]), UseProductionNames=UseProductionNames, AutoHint=TTF_AutoHint))
+print(font.export(format=VARIABLE, containers=[PLAIN, WOFF, WOFF2], fontPath=os.path.expanduser(subfolder_paths["Website - Protected files"]), useProductionNames=UseProductionNames, autoHint=TTF_AutoHint))
 print()
 
 # Delete the Temporary Variable Instances
@@ -94,7 +94,7 @@ TemporaryVariableInstance_Actual.customParameters['fileName'] = f"{font.familyNa
 font.instances.append(TemporaryVariableInstance_Actual)
 
 print("== Exporting Variable ==")
-print(font.export(Format=VARIABLE, Containers=[PLAIN, WOFF, WOFF2], FontPath=os.path.expanduser(subfolder_paths["Variable"]), UseProductionNames=UseProductionNames, AutoHint=TTF_AutoHint))
+print(font.export(format=VARIABLE, containers=[PLAIN, WOFF, WOFF2], fontPath=os.path.expanduser(subfolder_paths["Variable"]), useProductionNames=UseProductionNames, autoHint=TTF_AutoHint))
 print()
 
 # Delete the Actual Temporary Variable Instance
@@ -104,15 +104,15 @@ font.instances.remove(TemporaryVariableInstance_Actual)
 # Export OTF, TTF and WOFF
 for instance in font.instances:
     print("== Exporting OTF ==")
-    print(instance.generate(Format=OTF, FontPath=os.path.expanduser(subfolder_paths["OTF"]), AutoHint=OTF_AutoHint, RemoveOverlap=RemoveOverlap, UseSubroutines=UseSubroutines, UseProductionNames=UseProductionNames))
+    print(instance.generate(format=OTF, fontPath=os.path.expanduser(subfolder_paths["OTF"]), autoHint=OTF_AutoHint, removeOverlap=RemoveOverlap, useSubroutines=UseSubroutines, useProductionNames=UseProductionNames))
 print()
 
 for instance in font.instances:
     print("== Exporting TTF ==")
-    print(instance.generate(Format=TTF, FontPath=os.path.expanduser(subfolder_paths["TTF"]), AutoHint=TTF_AutoHint, RemoveOverlap=RemoveOverlap, UseProductionNames=UseProductionNames))
+    print(instance.generate(format=TTF, fontPath=os.path.expanduser(subfolder_paths["TTF"]), autoHint=TTF_AutoHint, removeOverlap=RemoveOverlap, useProductionNames=UseProductionNames))
 print()
 
 for instance in font.instances:
     print("== Exporting Web ==")
-    print(instance.generate(Format=Web_OutlineFormat, FontPath=os.path.expanduser(subfolder_paths["WOFF"]), AutoHint=TTF_AutoHint, RemoveOverlap=RemoveOverlap, UseSubroutines=UseSubroutines, UseProductionNames=UseProductionNames, Containers=[WOFF, WOFF2, EOT]))
+    print(instance.generate(format=Web_OutlineFormat, fontPath=os.path.expanduser(subfolder_paths["WOFF"]), autoHint=TTF_AutoHint, removeOverlap=RemoveOverlap, useSubroutines=UseSubroutines, useProductionNames=UseProductionNames, containers=[WOFF, WOFF2, EOT]))
 print()
